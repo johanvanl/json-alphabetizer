@@ -24,8 +24,8 @@ class MainPage(webapp2.RequestHandler):
         except Exception, e:
             out = 'ERROR : ' + str(e)
 
-        style = '<style type="text/css">html,body{height:100%;}textarea{width:100%;height:98%;}</style>'
-        self.response.write(style + '<textarea>' + out + '</textarea>')
+        self.response.content_type = 'application/json'
+        self.response.write(out)
 
 application = webapp2.WSGIApplication([
     ('/', MainPage),
